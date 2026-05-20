@@ -14,6 +14,7 @@ import {
 import { BsProjector } from "react-icons/bs";
 import { IoLocationOutline } from "react-icons/io5";
 import { HiOutlineUsers } from "react-icons/hi2";
+import BookingModal from "@/components/BookingModal";
 
 
 const amenityIcons = {
@@ -44,6 +45,9 @@ const RoomDetails =async ({ params }) => {
     amenities,
   } = room;
 
+
+
+  
   return (
     <div className="min-h-screen bg-[#0f0702] text-white py-12 px-4">
       <div className="max-w-7xl mx-auto">
@@ -210,9 +214,10 @@ const RoomDetails =async ({ params }) => {
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mt-12">
               
-              <button className="btn flex-1 rounded-full bg-[#d89d33] hover:bg-[#f0b44b] border-none text-black text-lg">
+              {/* <button className="btn flex-1 rounded-full bg-[#d89d33] hover:bg-[#f0b44b] border-none text-black text-lg">
                 Book Now
-              </button>
+              </button> */}
+              <BookingModal room={room}></BookingModal>
 
               <button className="btn flex-1 rounded-full btn-outline border-[#d89d33] text-[#d89d33] hover:bg-[#d89d33] hover:text-black text-lg">
                 Contact Host
