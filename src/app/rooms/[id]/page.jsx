@@ -157,6 +157,32 @@ const RoomDetails =async ({ params }) => {
               </div>
             </div>
 
+            {/* host information  */}
+            <div className="bg-[#1a0f08] border border-[#2d1f12] rounded-2xl p-5 flex items-center gap-4">
+              
+                <div className="bg-[#2e1d0f] p-4 rounded-xl text-[#d89d33] text-2xl">
+                  <Image
+                  src={room?.userImg}
+                  alt="host image"
+                  height={65}
+                  width={65}
+                  className="rounded-xl"
+                  ></Image>
+                  
+                </div>
+
+                <div>
+                   <h4 className="text-xl font-semibold">
+                   {room?.userName}
+                  </h4>
+                  <p className="text-gray-400 text-sm">
+                    HOST
+                  </p>
+
+                 
+                </div>
+              </div>
+
             {/* Amenities */}
             <div className="mt-10">
               <h3 className="text-2xl font-semibold mb-5">
