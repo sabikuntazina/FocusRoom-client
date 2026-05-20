@@ -77,7 +77,8 @@ const status = "confirmed"
       roomImg : room.image,
       roomName: room.roomName,
       userId: user?.id,
-      userName: user?.name
+      userName: user?.name,
+      roomId:room._id,
     };
 console.log(bookingData)
 

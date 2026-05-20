@@ -21,6 +21,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import EditRoomModal from "@/components/EditRoomModal";
 import DeleteRoomModal from "@/components/DeleteRoomModal";
+import Link from "next/link";
 
 
 const amenityIcons = {
@@ -265,7 +266,19 @@ const isOwner = user?.id === room?.userId;
               {/* <button className="btn flex-1 rounded-full bg-[#d89d33] hover:bg-[#f0b44b] border-none text-black text-lg">
                 Book Now
               </button> */}
-              <BookingModal room={room}></BookingModal>
+              
+             {
+  user ? (
+    <BookingModal room={room} />
+  ) : (
+    <Link
+      href="/login"
+      className="btn flex-1 rounded-full bg-[#d89d33] hover:bg-[#f0b44b] border-none text-black text-lg"
+    >
+      Book Now
+    </Link>
+  )
+}
 
               <button className="btn flex-1 rounded-full btn-outline border-[#d89d33] text-[#d89d33] hover:bg-[#d89d33] hover:text-black text-lg">
                 Contact Host

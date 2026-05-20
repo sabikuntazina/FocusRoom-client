@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const RegisterPage = () => {
   const [error, setError] = useState("");
@@ -39,13 +40,13 @@ const RegisterPage = () => {
     }
 
     if (data) {
-      alert("Registration Successful")
-      redirect("/");
+      toast.success("Registration Successful")
+      redirect("/login");
     }
 
     if (error) {
       // toast
-      alert("Error");
+      toast.error("Error");
     }
   };
     const handleGoogleSignin = async () => {

@@ -135,12 +135,12 @@ console.log(error, "error")
                   <span className="text-gray-300">Remember me</span>
                 </label>
 
-                <a
-                  href="/forgot-password"
+                <p
+                  
                   className="text-[#d69b2d] hover:underline"
                 >
                   Forgot password?
-                </a>
+                </p>
               </div>
 
               {/* Login Button */}

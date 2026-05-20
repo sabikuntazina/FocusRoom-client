@@ -66,11 +66,13 @@ const Navbar = () => {
 
       {
     user ? <>
-       {links}
+      <NavLink href={'/'}><li>Home</li></NavLink>
+      <NavLink href={'/rooms'}><li>Rooms</li></NavLink>
       <NavLink href={'/add-room'}><li>Add Room</li></NavLink>
   <NavLink href={'/my-listings'}><li>My Listings</li></NavLink>
   <NavLink href={'/my-bookings'}><li>My Bookings</li></NavLink>
-      </> : <> {links}</>
+      </> : <> <NavLink href={'/'}><li>Home</li></NavLink>
+      <NavLink href={'/rooms'}><li>Rooms</li></NavLink></>
      }
     </ul>
   </div>

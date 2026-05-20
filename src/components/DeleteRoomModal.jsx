@@ -26,14 +26,13 @@ const router=useRouter();
        toast.success("Room Deleted successfully!");
   router.push('/my-listings')
     document.getElementById(modalId).close();
-  
- 
      
        }
-  
-    
-      } 
-    
+      
+   
+
+ 
+      }
   return (
     <>
       {/* Open Button */}
