@@ -23,7 +23,13 @@ const Navbar = () => {
   const user = session?.user;
  
   const handleSignOut = async () => {
-    await authClient.signOut();
+     await authClient.signOut({
+    fetchOptions: {
+      onSuccess: () => {
+        window.location.href = "/login";
+      },
+    },
+  });
   };
   return (
     <div className='bgColor2 sticky top-0 z-50 bg-transparent'>

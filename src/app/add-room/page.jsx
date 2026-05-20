@@ -4,6 +4,12 @@ import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
+
+// export const metadata = {
+//   title: "FocusRoom-add-rooms",
+//   description: "Find Your Perfect Focus Zone",
+// };
+
 const amenitiesList = [
   "Whiteboard",
   "Projector",
@@ -55,7 +61,8 @@ const onSubmit = async (e) => {
     amenities: formData.getAll("amenities"),
   };
 
-  console.log(roomsData);
+  // console.log(roomsData);
+const {data:tokenData} = await authClient.token();
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms`,
@@ -63,6 +70,8 @@ const onSubmit = async (e) => {
       method: "POST",
       headers: {
         "Content-type": "application/json",
+          'authorization': `Bearer ${tokenData?.token}`
+
       },
       body: JSON.stringify(roomsData),
     }

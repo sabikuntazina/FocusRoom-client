@@ -5,6 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
+export const metadata = {
+  title: "FocusRoom-My-Bookings",
+  description: "Find Your Perfect Focus Zone",
+};
+
 const MyBookingsPage =async () => {
   const session = await auth.api.getSession({
     headers: await headers() // you need to pass the headers object.
@@ -12,8 +17,18 @@ const MyBookingsPage =async () => {
 
 const user= session?.user;
 // console.log(user)
+const {token}= await auth.api.getToken({
+    headers: await headers()
+  })
+  // console.log(token)
 
-  const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${user?.id}`);
+  const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${user?.id}`,   {
+      headers:{
+        authorization: `Bearer ${token}`
+       
+      }
+    }
+);
   const bookings =await res.json();
   console.log(bookings)
   const today = new Date();

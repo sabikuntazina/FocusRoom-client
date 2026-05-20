@@ -1,5 +1,7 @@
 import RoomCard from "@/components/RoomCard";
 import SearchFilter from "@/components/SearchFilter";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const RoomsPage = async ({ searchParams }) => {
 
@@ -22,11 +24,18 @@ const RoomsPage = async ({ searchParams }) => {
   if (params?.maxPrice) {
     query.append("maxPrice", params.maxPrice);
   }
-
+const {token}= await auth.api.getToken({
+    headers: await headers()
+  })
+  // console.log(token)
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms?${query.toString()}`,
     {
       cache: "no-store",
+       headers:{
+            authorization: `Bearer ${token}`
+           
+          }
     }
   );
 

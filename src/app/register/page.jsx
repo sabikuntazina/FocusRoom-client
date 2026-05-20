@@ -6,6 +6,12 @@ import { redirect } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
+
+// export const metadata = {
+//   title: "FocusRoom-Register",
+//   description: "Find Your Perfect Focus Zone",
+// };
+
 const RegisterPage = () => {
   const [error, setError] = useState("");
 

@@ -24,6 +24,14 @@ import DeleteRoomModal from "@/components/DeleteRoomModal";
 import Link from "next/link";
 
 
+
+export const metadata = {
+  title: "Browsing Our rooms",
+  description: "Find Your Perfect Focus Zone",
+};
+
+
+
 const amenityIcons = {
   "Wi-Fi": <FaWifi />,
   "Power Outlets": <MdOutlinePower />,
@@ -31,6 +39,8 @@ const amenityIcons = {
   Whiteboard: <MdOutlineMeetingRoom />,
   Projector: <BsProjector />,
 };
+
+
 
 const RoomDetails =async ({ params }) => {
   const {id} =await params;
@@ -42,9 +52,11 @@ const RoomDetails =async ({ params }) => {
 });
 
 const user = session?.user;
-  console.log(id);
+  // console.log(id);
   const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${id}`);
   const room=await res.json();
+
+ 
 
   const {
     roomName,
