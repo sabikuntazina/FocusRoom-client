@@ -14,7 +14,11 @@ import {
 import { BsProjector } from "react-icons/bs";
 import { IoLocationOutline } from "react-icons/io5";
 import { HiOutlineUsers } from "react-icons/hi2";
+
 import BookingModal from "@/components/BookingModal";
+
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 
 const amenityIcons = {
@@ -28,6 +32,13 @@ const amenityIcons = {
 const RoomDetails =async ({ params }) => {
   const {id} =await params;
  
+  // user information 
+
+  const session = await auth.api.getSession({
+  headers: await headers(),
+});
+
+const user = session?.user;
   console.log(id);
   const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${id}`);
   const room=await res.json();
@@ -46,7 +57,7 @@ const RoomDetails =async ({ params }) => {
   } = room;
 
 
-
+const isOwner = user?.id === room?.userId;
   
   return (
     <div className="min-h-screen bg-[#0f0702] text-white py-12 px-4">
@@ -75,6 +86,43 @@ const RoomDetails =async ({ params }) => {
             >
               {availability ? "Available" : "Unavailable"}
             </div>
+       {/* Owner Actions */}
+{
+  isOwner && (
+    <div className="mt-6 bg-[#1a0f08] border border-[#2d1f12] rounded-3xl p-6">
+      
+      <div className="flex items-center justify-between mb-6">
+        
+        <div>
+          <h3 className="text-2xl font-semibold text-[#f8f1e7]">
+            Manage Listing
+          </h3>
+
+          <p className="text-gray-400 mt-1">
+            Edit room details or remove this listing.
+          </p>
+        </div>
+
+        <div className="badge badge-warning text-black px-4 py-3">
+          Owner
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        
+        {/* Edit */}
+        <button className="btn rounded-2xl bg-[#d89d33] hover:bg-[#e7ae46] border-none text-black text-lg h-14">
+          Edit Room
+        </button>
+
+        {/* Delete */}
+        <button className="btn rounded-2xl bg-red-600 hover:bg-red-700 border-none text-white text-lg h-14">
+          Delete Room
+        </button>
+      </div>
+    </div>
+  )
+}
 
             {/* Rating */}
             <div className="absolute top-5 right-5 bg-black/70 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2">
@@ -174,6 +222,8 @@ const RoomDetails =async ({ params }) => {
                   ></Image>
                   
                 </div>
+
+                
 
                 <div>
                    <h4 className="text-xl font-semibold">

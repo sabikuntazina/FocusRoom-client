@@ -1,5 +1,7 @@
+import RoomCard from '@/components/RoomCard';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
+import Link from 'next/link';
 import React from 'react';
 
 const MyListingsPage = async () => {
@@ -17,158 +19,56 @@ const MyListingsPage = async () => {
     return <div>User not logged in</div>;
   }
 const res = await fetch(
-  `${process.env.NEXT_PUBLIC_SERVER_URL}/allrooms/${user.id}`
+  `${process.env.NEXT_PUBLIC_SERVER_URL}/mylistings/${user.id}`
 );
 
-const data = await res.json();
+const rooms = await res.json();
 
-console.log(data);
+
 
   return (
-    <div>
-      My listing
+  
+    <div className='space-y-5 my-20'>
+        <h2 className='text-[#da9e38] font-serif font-semibold text-5xl'>My Listings</h2>
+         {
+  rooms.length === 0 ? (
+    <div className="bg-[#1e1711] border border-[#3b2618] rounded-[32px] p-14 text-center flex flex-col items-center justify-center">
+      
+      <div className="w-24 h-24 rounded-full bg-[#24140c] flex items-center justify-center mb-6">
+        <span className="text-5xl text-[#da9e38]">+</span>
+      </div>
+
+      <h2 className="text-4xl font-serif text-[#f8f1e7] mb-4">
+        No Listings Yet
+      </h2>
+
+      <p className="text-gray-400 max-w-xl mb-8 text-lg">
+        You haven’t added any study rooms yet.
+        Start creating your first listing and
+        share your perfect focus space.
+      </p>
+
+      <Link
+        href="/add-room"
+        className="btn rounded-full bg-[#d89c3d] border-none text-black hover:bg-[#e4aa4b] px-10 text-lg"
+      >
+        Add New Room
+      </Link>
     </div>
-//     <div>
-//     <div className="min-h-screen bg-[#0b0502] text-white p-6">
-//   {/* Header */}
-//   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
-//     <div>
-//       <p className="uppercase tracking-[4px] text-sm text-[#b28b5c]">
-//         Host
-//       </p>
-
-//       <h1 className="text-5xl font-serif text-[#f8f1e7]">
-//         My Listings
-//       </h1>
-//     </div>
-
-//     <button className="btn rounded-full bg-[#d89c3d] border-none text-black hover:bg-[#e4aa4b] px-7">
-//       + New Listing
-//     </button>
-//   </div>
-
-//   {/* Stats */}
-//   <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
-//     {/* Card */}
-//     <div className="bg-[#1a0f08] border border-[#3a2618] rounded-[30px] p-6">
-//       <div className="flex items-center justify-between mb-5">
-//         <p className="uppercase text-sm tracking-wide text-[#c6a57a]">
-//           Total Listings
-//         </p>
-
-//         <div className="badge badge-sm bg-[#2a1d14] border-none text-white">
-//           live
-//         </div>
-//       </div>
-
-//       <h2 className="text-5xl text-[#e6b04d] font-semibold">1</h2>
-//     </div>
-
-//     {/* Card */}
-//     <div className="bg-[#1a0f08] border border-[#3a2618] rounded-[30px] p-6">
-//       <div className="flex items-center justify-between mb-5">
-//         <p className="uppercase text-sm tracking-wide text-[#c6a57a]">
-//           Active
-//         </p>
-
-//         <div className="badge badge-sm bg-[#2a1d14] border-none text-white">
-//           +
-//         </div>
-//       </div>
-
-//       <h2 className="text-5xl text-[#e6b04d] font-semibold">1</h2>
-//     </div>
-
-//     {/* Card */}
-//     <div className="bg-[#1a0f08] border border-[#3a2618] rounded-[30px] p-6">
-//       <div className="flex items-center justify-between mb-5">
-//         <p className="uppercase text-sm tracking-wide text-[#c6a57a]">
-//           Avg. Price
-//         </p>
-
-//         <div className="badge badge-sm bg-[#2a1d14] border-none text-white">
-//           $
-//         </div>
-//       </div>
-
-//       <h2 className="text-5xl text-[#e6b04d] font-semibold">$20/hr</h2>
-//     </div>
-//   </div>
-
-//   {/* Table */}
-//   <div className="overflow-x-auto rounded-[32px] border border-[#3a2618] bg-[#1a0f08]">
-//     <table className="table">
-//       {/* head */}
-//       <thead>
-//         <tr className="text-[#b9966d] border-b border-[#3a2618]">
-//           <th>ROOM</th>
-//           <th>STATUS</th>
-//           <th>PRICE</th>
-//           <th>CAPACITY</th>
-//           <th className="text-right">ACTIONS</th>
-//         </tr>
-//       </thead>
-
-//       <tbody>
-//         <tr className="hover:bg-[#24140c] transition">
-//           {/* Room */}
-//           <td>
-//             <div className="flex items-center gap-4">
-//               <div className="avatar">
-//                 <div className="w-16 rounded-2xl">
-//                   <img
-//                     src="https://i.ibb.co/5xJQq7m/room.jpg"
-//                     alt="room"
-//                   />
-//                 </div>
-//               </div>
-
-//               <div>
-//                 <div className="font-semibold text-lg">ytuyrt</div>
-//                 <div className="text-sm text-gray-400">
-//                   tryutyt
-//                 </div>
-//               </div>
-//             </div>
-//           </td>
-
-//           {/* Status */}
-//           <td>
-//             <div className="badge badge-success badge-outline px-4 py-3">
-//               Active
-//             </div>
-//           </td>
-
-//           {/* Price */}
-//           <td className="font-semibold text-[#f3c46c]">
-//             $20/hr
-//           </td>
-
-//           {/* Capacity */}
-//           <td>4</td>
-
-//           {/* Actions */}
-//           <td>
-//             <div className="flex justify-end gap-3 text-xl">
-//               <button className="btn btn-ghost btn-sm hover:bg-[#2d1a10]">
-//                 👁
-//               </button>
-
-//               <button className="btn btn-ghost btn-sm hover:bg-[#2d1a10]">
-//                 ✏️
-//               </button>
-
-//               <button className="btn btn-ghost btn-sm text-red-500 hover:bg-[#2d1a10]">
-//                 🗑
-//               </button>
-//             </div>
-//           </td>
-//         </tr>
-//       </tbody>
-//     </table>
-//   </div>
-// </div>
-//     </div>
+  ) : (
+    <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+      {
+        rooms.map(room => (
+          <RoomCard
+            key={room._id}
+            room={room}
+          />
+        ))
+      }
+    </div>
+  )
+}
+       </div>
   );
 };
 

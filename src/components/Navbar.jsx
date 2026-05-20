@@ -82,52 +82,96 @@ const Navbar = () => {
     <div className='flex justify-between items-center gap-2'>
 
     <div className="dropdown dropdown-end">
-      <div
-        tabIndex={0}
-        role="button"
-        className="btn btn-ghost btn-circle avatar"
-      >
-        {
-          user?.image ? (
-            <div className="w-12 rounded-full overflow-hidden">
-              <Image
-                src={user?.image}
-                alt="user"
-                width={48}
-                height={48}
-                className="rounded-full object-cover"
-              />
-            </div>
-          ) : (
-            <div className="avatar placeholder">
-              <div className="bg-neutral text-white w-12 rounded-full">
-                <span>{user.name.charAt(0)}</span>
-              </div>
-            </div>
-          )
-        }
-      </div>
+  {/* Dropdown Button */}
+  <div
+    tabIndex={0}
+    role="button"
+    className="flex items-center gap-3 bg-[#1b130d] hover:bg-[#241811] border border-[#3b2618] px-3 py-2 rounded-2xl cursor-pointer transition-all duration-300 hover:scale-[1.02]"
+  >
+    {/* Avatar */}
+    {
+      user?.image ? (
+        <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#da9e38]">
+          <Image
+            src={user?.image}
+            alt="user"
+            width={48}
+            height={48}
+            className="rounded-full object-cover"
+          />
+        </div>
+      ) : (
+        <div className="avatar placeholder">
+          <div className="bg-[#da9e38] text-[#1b130d] w-12 rounded-full font-bold">
+            <span>{user.name.charAt(0)}</span>
+          </div>
+        </div>
+      )
+    }
 
-      <ul
-        tabIndex={0}
-        className="menu menu-sm dropdown-content bg-[#1e1711] rounded-box z-[1] mt-3 w-52 p-2 shadow-lg shadow-yellow-500"
-      >
-        <li>
-          <a>Profile</a>
-        </li>
+    {/* Name */}
+    <div className="hidden md:block">
+      <h3 className="text-white font-semibold leading-none">
+        {user?.name}
+      </h3>
 
-        <li>
-          <a>Settings</a>
-        </li>
-
-        <li>
-          <button onClick={handleSignOut}>Logout</button>
-        </li>
-      </ul>
+      <p className="text-xs text-gray-400">
+        View Profile
+      </p>
     </div>
-     <div className='text-white'>
-                {user?.name}
-              </div>
+  </div>
+
+  {/* Dropdown Menu */}
+  <ul
+    tabIndex={0}
+    className="menu menu-sm dropdown-content bg-[#1a120d] border border-[#3b2618] rounded-3xl z-[1] mt-4 w-72 p-3 shadow-2xl shadow-black/40"
+  >
+    {/* User Info */}
+    <div className="px-4 py-3 border-b border-[#2b1a11] mb-2">
+      <h3 className="text-lg font-semibold text-[#f8f1e7]">
+        {user?.name}
+      </h3>
+
+      <p className="text-sm text-gray-400 truncate">
+        {user?.email}
+      </p>
+    </div>
+
+    {/* Profile */}
+    <li>
+      <Link
+        href="/profile"
+        className="rounded-2xl py-3 text-base text-gray-200 hover:bg-[#2b1a11] hover:text-[#da9e38] transition-all duration-300"
+      >
+        Profile
+      </Link>
+    </li>
+
+    {/* Settings */}
+    <li>
+      <Link
+        href="/settings"
+        className="rounded-2xl py-3 text-base text-gray-200 hover:bg-[#2b1a11] hover:text-[#da9e38] transition-all duration-300"
+      >
+        Settings
+      </Link>
+    </li>
+
+    {/* Divider */}
+    <div className="border-t border-[#2b1a11] my-2"></div>
+
+    {/* Logout */}
+    <li>
+      <button
+        onClick={handleSignOut}
+        className="rounded-2xl py-3 text-base bg-red-500/10 text-red-400 hover:bg-red-600 hover:text-white transition-all duration-300"
+      >
+        Logout
+      </button>
+    </li>
+  </ul>
+</div>
+    
     </div>
   ) : (
     <ul className="menu menu-horizontal text-lg space-x-4 px-1">

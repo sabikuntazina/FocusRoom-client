@@ -23,10 +23,14 @@ const allSlots = [
 
 export default function BookingModal({room}) {
   // console.log(room)
+  // Today's date
+const today = new Date().toISOString().split("T")[0];
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
-  const [bookingDate, setBookingDate] = useState("");
+const [bookingDate, setBookingDate] = useState(today);
   const [note, setNote] = useState("");
+
+
 
   // End time options
   const filteredEndTimes = useMemo(() => {
@@ -37,10 +41,11 @@ export default function BookingModal({room}) {
     return allSlots.filter((_, i) => i > startIndex);
   }, [startTime]);
 
- const onChange=(e) => {
-  setStartTime(e.target.value);
-  setEndTime("");
-}
+//  const onChange=(e) => {
+//   setBookingDate(e.target.value)
+//   setStartTime(e.target.value);
+//   setEndTime("");
+// }
   // Total cost
   const totalCost = useMemo(() => {
     if (!startTime || !endTime) return 0;
@@ -51,8 +56,7 @@ export default function BookingModal({room}) {
     return (endHour - startHour) * hourlyRate;
   }, [startTime, endTime]);
 
-  // Today's date
-  const today = new Date().toISOString().split("T")[0];
+  
 const status = "confirmed"
 
 // User information 
@@ -86,11 +90,15 @@ console.log(bookingData)
     })
     const result= await res.json();
     console.log(result)
-     if (result.insertedId) {
-        toast.success("Room booked successfully!");
+    if (result.insertedId) {
+  toast.success("Room booked successfully!");
 
-        document.getElementById("booking_modal").close();
-      }
+  document.getElementById("booking_modal").close();
+} else if (result.message === "already booked") {
+  toast.error(
+    "This room is already booked for this slot!"
+  );
+}
 
   }
 
@@ -138,16 +146,14 @@ console.log(bookingData)
                 </span>
               </label>
 
-              <input
-                type="date"
-                required
-                min={today}
-                value={bookingDate}
-                onChange={(e) =>
-                  setBookingDate(e.target.value)
-                }
-                className="input w-full bg-[#1c120c] border border-[#3b2618] rounded-2xl text-white focus:outline-none focus:border-[#d89c3d]"
-              />
+             <input
+  type="date"
+  required
+  min={today}
+  value={bookingDate}
+  onChange={(e) => setBookingDate(e.target.value)}
+  className="input w-full bg-[#1c120c] border border-[#3b2618] rounded-2xl text-white focus:outline-none focus:border-[#d89c3d]"
+/>
             </div>
 
             {/* Time Section */}

@@ -1,5 +1,7 @@
+import BookingCancelModal from '@/components/BookingCancelModal';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -49,89 +51,98 @@ const user= session?.user;
           </Link>
         </div>
       ) : (
-        <div className="space-y-6">
-          {bookings.map((booking) => {
-            const bookingDate = new Date(booking.date);
+       <div className="overflow-x-auto rounded-[32px] border border-[#3b2618] bg-[#110c08]">
+  <table className="table table w-full">
+    {/* head */}
+    <thead>
+      <tr className="text-[#c6a57a] text-lg border-b border-[#3b2618]">
+        <th>Room</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Cost</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
 
-            const canCancel =
-              booking.status === "confirmed" &&
-              bookingDate >= today;
+    <tbody>
+      {bookings.map((booking) => {
+        const bookingDate = new Date(booking.bookingDate);
 
-            return (
-              <div
-                key={booking._id}
-                className="bg-[#140b05] border border-[#3b2618] rounded-[32px] p-6"
-              >
-                <div className="flex flex-col lg:flex-row gap-6 lg:items-center lg:justify-between">
-                  {/* Left */}
-                  <div className="flex flex-col md:flex-row gap-5 md:items-center">
-                    {/* Image */}
-                    <div className="avatar">
-                      <div className="w-28 h-28 rounded-3xl">
-                        <img
-                          src={booking.image}
-                          alt={booking.roomName}
-                        />
-                      </div>
-                    </div>
+        const canCancel =
+          booking.status === "confirmed" &&
+          bookingDate >= today;
 
-                    {/* Info */}
-                    <div>
-                      <h2 className="text-3xl font-serif text-[#f8f1e7] mb-2">
-                        {booking.roomName}
-                      </h2>
-
-                      <div className="space-y-1 text-gray-300">
-                        <p>
-                          Date:{" "}
-                          <span className="text-white">
-                            {booking.date}
-                          </span>
-                        </p>
-
-                        <p>
-                          Time:{" "}
-                          <span className="text-white">
-                            {booking.startTime} -{" "}
-                            {booking.endTime}
-                          </span>
-                        </p>
-
-                        <p>
-                          Total Cost:{" "}
-                          <span className="text-[#e6b04d] font-semibold">
-                            ${booking.totalCost}
-                          </span>
-                        </p>
-                      </div>
-                    </div>
+        return (
+          <tr
+  key={booking._id}
+  className="hover:bg-[#1b1009] border-b border-[#2b1a11] text-base"
+>
+            {/* Room */}
+            <td>
+              <div className="flex items-center gap-4">
+                <div className="avatar">
+                  <div className="w-24 rounded-2xl">
+                    <Image
+                      src={booking.roomImg}
+                      alt={booking.roomName}
+                      width={80}
+                      height={80}
+                      className="object-cover"
+                    />
                   </div>
+                </div>
 
-                  {/* Right */}
-                  <div className="flex flex-col items-start lg:items-end gap-4">
-                    {/* Status */}
-                    <div
-                      className={`badge px-5 py-4 border-none text-white ${
-                        booking.status === "confirmed"
-                          ? "bg-green-600"
-                          : "bg-red-600"
-                      }`}
-                    >
-                      {booking.status}
-                    </div>
-
-                    {/* Cancel Button */}
-                    
-                      <button className="btn rounded-full bg-red-600 border-none text-white hover:bg-red-700 px-7">
-                        Cancel Booking
-                      </button>
-                    
+                <div>
+                  <div className="font-bold text-[#f8f1e7] text-xl">
+                    {booking.roomName}
                   </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            </td>
+
+            {/* Date */}
+            <td className="text-white">
+              {new Date(
+                booking.bookingDate
+              ).toLocaleDateString()}
+            </td>
+
+            {/* Time */}
+            <td className="text-white">
+              {booking.startTime} - {booking.endTime}
+            </td>
+
+            {/* Cost */}
+            <td className="text-[#e6b04d] font-semibold">
+              ${booking.totalCost}
+            </td>
+
+            {/* Status */}
+            <td>
+              <div
+                className={`badge border-none text-white ${
+                  booking.status === "confirmed"
+                    ? "badge-success"
+                    : "badge-error"
+                }`}
+              >
+                {booking.status}
+              </div>
+            </td>
+
+            {/* Action */}
+            <td>
+              {canCancel && (
+                <BookingCancelModal booking={booking} />
+              )}
+            </td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>
       )}
     </div>
     </div>
