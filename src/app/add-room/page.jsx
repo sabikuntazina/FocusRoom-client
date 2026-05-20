@@ -1,7 +1,8 @@
 'use client'
 import React, { useState } from "react";
-import { ImageIcon } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const amenitiesList = [
   "Whiteboard",
@@ -21,7 +22,7 @@ const amenitiesList = [
 const AddRoomForm = () => {
   const { data: session } = authClient.useSession();
     const user = session?.user;
-
+  const router=useRouter();
   const [selectedAmenities, setSelectedAmenities] = useState([]);
 
   const handleAmenities = (item) => {
@@ -68,10 +69,12 @@ const onSubmit = async (e) => {
   );
 
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
 
   if (data) {
-    alert("Room published Successfully");
+    toast.success("Room published Successfully");
+    router.push('/my-listings')
+
   }
 };
 

@@ -19,7 +19,7 @@ const user= session?.user;
   const today = new Date();
   return (
     <div>
-     <div className="min-h-screen bg-[#0b0502] text-white p-6 md:p-10">
+     <div className="min-h-screen max-w-6xl mx-auto bg-[#0b0502] text-white p-6 md:p-10">
       {/* Header */}
       <div className="mb-10">
         <p className="uppercase tracking-[4px] text-sm text-[#b28b5c] mb-2">

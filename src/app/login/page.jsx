@@ -3,6 +3,7 @@ import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import React from "react";
+import toast from "react-hot-toast";
 
 const LoginPage = () => {
   const onSubmit = async (e) => {
@@ -19,13 +20,13 @@ console.log(data, "Data")
 console.log(error, "error")
 
     if (data) {
-      alert("Login successfull")
+      toast.success("Login successful")
       redirect('/')
     }
 
     if (error) {
       // toast
-      alert("Error");
+      toast.error(error.message);
     }
   };
 

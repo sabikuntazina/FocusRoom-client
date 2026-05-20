@@ -19,6 +19,8 @@ import BookingModal from "@/components/BookingModal";
 
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import EditRoomModal from "@/components/EditRoomModal";
+import DeleteRoomModal from "@/components/DeleteRoomModal";
 
 
 const amenityIcons = {
@@ -111,14 +113,10 @@ const isOwner = user?.id === room?.userId;
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         
         {/* Edit */}
-        <button className="btn rounded-2xl bg-[#d89d33] hover:bg-[#e7ae46] border-none text-black text-lg h-14">
-          Edit Room
-        </button>
+       <EditRoomModal room={room} />
 
         {/* Delete */}
-        <button className="btn rounded-2xl bg-red-600 hover:bg-red-700 border-none text-white text-lg h-14">
-          Delete Room
-        </button>
+ <DeleteRoomModal room={room} />
       </div>
     </div>
   )
