@@ -10,8 +10,8 @@ import { authClient } from '@/lib/auth-client';
 
   const links=<>
 
-  <NavLink href={'/'}><li>Home</li></NavLink>
-  <NavLink href={'/rooms'}><li>Rooms</li></NavLink>
+  <NavLink href={'/'}><li  className="rounded-2xl py-3 text-base text-gray-200 hover:bg-[#2b1a11] hover:text-[#da9e38] transition-all duration-300">Home</li></NavLink>
+  <NavLink href={'/rooms'}><li  className="rounded-2xl py-3 text-base text-gray-200 hover:bg-[#2b1a11] hover:text-[#da9e38] transition-all duration-300">Rooms</li></NavLink>
   </>
 
   const authLinks=<>
@@ -35,14 +35,14 @@ const Navbar = () => {
       </div>
       <ul
         tabIndex="-1"
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+         className="menu menu-sm dropdown-content bg-[#1a120d] border border-[#3b2618] rounded-3xl z-[1] mt-4 w-72 p-3 shadow-2xl shadow-black/40">
     
      {
       user ? <>
        {links}
-      <NavLink href={'/add-room'}><li>Add Room</li></NavLink>
-  <NavLink href={'/my-listings'}><li>My Listings</li></NavLink>
-  <NavLink href={'/my-bookings'}><li>My Bookings</li></NavLink>
+      <NavLink href={'/add-room'}><li  className="rounded-2xl py-3 text-base text-gray-200 hover:bg-[#2b1a11] hover:text-[#da9e38] transition-all duration-300">Add Room</li></NavLink>
+  <NavLink href={'/my-listings'}><li  className="rounded-2xl py-3 text-base text-gray-200 hover:bg-[#2b1a11] hover:text-[#da9e38] transition-all duration-300">My Listings</li></NavLink>
+  <NavLink href={'/my-bookings'}><li  className="rounded-2xl py-3 text-base text-gray-200 hover:bg-[#2b1a11] hover:text-[#da9e38] transition-all duration-300">My Bookings</li></NavLink>
       </> : <> {links}</>
      }
       </ul>
@@ -140,20 +140,20 @@ const Navbar = () => {
     {/* Profile */}
     <li>
       <Link
-        href="/profile"
+        href="/my-bookings"
         className="rounded-2xl py-3 text-base text-gray-200 hover:bg-[#2b1a11] hover:text-[#da9e38] transition-all duration-300"
       >
-        Profile
+        My Bookings
       </Link>
     </li>
 
     {/* Settings */}
     <li>
       <Link
-        href="/settings"
+        href="/my-listings"
         className="rounded-2xl py-3 text-base text-gray-200 hover:bg-[#2b1a11] hover:text-[#da9e38] transition-all duration-300"
       >
-        Settings
+        My Listings
       </Link>
     </li>
 
