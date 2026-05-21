@@ -1,4 +1,4 @@
-# FocusRoom
+# Project Name:  FocusRoom
 
 ### Smart Space Booking Platform for Study, Meetings & Collaboration
 
