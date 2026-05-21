@@ -110,7 +110,9 @@ const {token}= await auth.api.getToken({
 
                 <div>
                   <div className="font-bold text-[#f8f1e7] text-xl">
+                    <Link href={`/rooms/${booking.roomId}`}>
                     {booking.roomName}
+                    </Link>
                   </div>
                 </div>
               </div>
