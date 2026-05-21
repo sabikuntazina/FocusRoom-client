@@ -12,7 +12,7 @@ export const metadata = {
 
 const MyBookingsPage =async () => {
   const session = await auth.api.getSession({
-    headers: await headers() // you need to pass the headers object.
+    headers: await headers() 
 })
 
 const user= session?.user;
@@ -30,7 +30,7 @@ const {token}= await auth.api.getToken({
     }
 );
   const bookings =await res.json();
-  console.log(bookings)
+  // console.log(bookings)
   const today = new Date();
   return (
     <div>

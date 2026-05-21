@@ -24,12 +24,15 @@ import DeleteRoomModal from "@/components/DeleteRoomModal";
 import Link from "next/link";
 
 
+export const generateMetadata = async ({ params }) => {
+  const { id } = await params;
+  const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${id}`);
+  const room=await res.json();
 
-export const metadata = {
-  title: "Browsing Our rooms",
-  description: "Find Your Perfect Focus Zone",
+  return {
+    title: `FocusRoom- ${room.roomName}`,
+  };
 };
-
 
 
 const amenityIcons = {
