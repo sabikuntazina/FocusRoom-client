@@ -36,7 +36,7 @@ const Navbar = () => {
      <div className="navbar  text-gray-50 max-w-6xl mx-auto shadow-sm">
   <div className="navbar-start">
     <div className="dropdown">
-      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+      <div tabIndex={0} role="button" className="lg:hidden btn btn-square btn-ghost btn-sm">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
       </div>
       <ul
@@ -57,14 +57,14 @@ const Navbar = () => {
     <Image 
     src={'/assets/logo.png'}
     alt='logo'
-    height={65}
-    width={65}
+    height={60}
+    width={60}
     >
     </Image>
-    <div className="flex-1">
+    {/* <div className="flex-1"> */}
 
-    <Link href={'/'} className=" text-xl font-extrabold"><span className='text-[#da9e38]'>Focus</span>Room </Link>
-  </div>
+    <Link href={'/'} className=" text-lg lg:text-xl font-extrabold"><span className='text-[#da9e38]'>Focus</span>Room </Link>
+  {/* </div> */}
     </div>
   </div>
   <div className="navbar-center hidden lg:flex">
@@ -83,8 +83,8 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end ">
-   <div className="flex items-center gap-4">
-    <a className='text-[#da9e38] text-2xl'><IoSunnySharp /></a>
+   <div className="flex items-center gap-2 lg:gap-4">
+    <a className='text-[#da9e38] text-lg lg:text-2xl'><IoSunnySharp /></a>
  {
   user ? (
     <div className='flex justify-between items-center gap-2'>
@@ -94,7 +94,7 @@ const Navbar = () => {
   <div
     tabIndex={0}
     role="button"
-    className="flex items-center gap-3 bg-[#1b130d] hover:bg-[#241811] border border-[#3b2618] px-3 py-2 rounded-2xl cursor-pointer transition-all duration-300 hover:scale-[1.02]"
+    className="flex items-center gap-3 max-w-55  bg-[#1b130d] hover:bg-[#241811] border border-[#3b2618] px-3 py-2 rounded-2xl cursor-pointer transition-all duration-300 hover:scale-[1.02]"
   >
     {/* Avatar */}
     {
@@ -132,7 +132,7 @@ const Navbar = () => {
   {/* Dropdown Menu */}
   <ul
     tabIndex={0}
-    className="menu menu-sm dropdown-content bg-[#1a120d] border border-[#3b2618] rounded-3xl z-[1] mt-4 w-72 p-3 shadow-2xl shadow-black/40"
+    className="menu menu-sm dropdown-content bg-[#1a120d] border border-[#3b2618] rounded-3xl z-[1] mt-4 w-64 sm:w-72 p-3 shadow-2xl shadow-black/40"
   >
     {/* User Info */}
     <div className="px-4 py-3 border-b border-[#2b1a11] mb-2">
@@ -182,7 +182,7 @@ const Navbar = () => {
     
     </div>
   ) : (
-    <ul className="menu menu-horizontal text-lg space-x-4 px-1">
+    <ul className="menu menu-horizontal text-lg gap-2 lg:gap-4 px-1">
       {authLinks}
     </ul>
   )
