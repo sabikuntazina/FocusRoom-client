@@ -16,7 +16,7 @@ import { authClient } from '@/lib/auth-client';
 
   const authLinks=<>
   <li><Link href={'/login'} className='btn shadow-none  btn-sm lg:btn-md text-sm lg:text-base bg-[#da9e38] text-[#1e1711] lg:px-5 rounded-xl border-none'>Login</Link></li>
-  <li className='hidden'><Link href={'/register'} className='btn shadow-none  btn-sm lg:btn-md text-sm lg:text-base bg-[#da9e38] text-[#1e1711] lg:px-5 rounded-xl border-none'>Register</Link></li>
+  <li className='hidden lg:inline-block'><Link href={'/register'} className='btn shadow-none  btn-sm lg:btn-md text-sm lg:text-base bg-[#da9e38] text-[#1e1711] lg:px-5 rounded-xl border-none'>Register</Link></li>
   </>
 const Navbar = () => {
   const { data: session } = authClient.useSession();
