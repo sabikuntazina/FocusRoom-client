@@ -1,16 +1,16 @@
-# Project Name:  FocusRoom
+# FocusRoom - Smart Space Booking Platform for Study, Meetings & Collaboration
 
-### Smart Space Booking Platform for Study, Meetings & Collaboration
+### 🚀 Project Name-FocusRoom
 
+## Description:
 FocusRoom is a modern full-stack room booking platform where students, teachers, and professionals can discover and reserve spaces for studying, meetings, classes, group discussions, and collaborative work.
 
 The platform allows users to browse available rooms, check facilities, search and filter spaces, and book rooms for specific date and time slots with automatic time-conflict prevention.
 
 ---
 
-## 🚀 Live Demo
-
-🔗 Live Site: [Coming Soon](https://focus-room-client.vercel.app)  
+## 🌐 Live URL
+👉 https://focus-room-client.vercel.app 
 
 ---
 
