@@ -1,4 +1,4 @@
-import React from 'react';
+
 import RoomCard from './RoomCard';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
@@ -9,6 +9,7 @@ const AvailableRooms = async() => {
 
     const res= await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/featured`);
   const rooms= await res.json();
+  console.log(rooms)
   // const availableRooms = rooms.filter(room => room.availability === true);
   // console.log(rooms)
   

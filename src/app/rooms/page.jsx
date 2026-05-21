@@ -29,11 +29,11 @@ const RoomsPage = async ({ searchParams }) => {
     `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms?${query.toString()}`,
     {
       cache: "no-store",
-     
     }
   );
 
   const rooms = await res.json();
+  console.log(rooms)
   const sortedRooms = [...rooms].reverse();
 
   return (

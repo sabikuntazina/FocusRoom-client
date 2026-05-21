@@ -59,6 +59,7 @@ const Navbar = () => {
     alt='logo'
     height={65}
     width={65}
+    loading="eager"
     >
     </Image>
     <div className="flex-1">
