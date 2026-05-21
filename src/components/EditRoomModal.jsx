@@ -1,5 +1,6 @@
 'use client';
 
+import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -23,12 +24,14 @@ const router=useRouter();
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-
+const {data:tokenData} = await authClient.token();
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${room._id}`,
       {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json",
+           'authorization': `Bearer ${tokenData?.token}`,
+         },
         body: JSON.stringify(form),
       }
     );
