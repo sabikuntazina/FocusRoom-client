@@ -15,8 +15,8 @@ import { authClient } from '@/lib/auth-client';
   </>
 
   const authLinks=<>
-  <li><Link href={'/login'} className='btn btn-active bg-[#da9e38] text-[#1e1711] text-base rounded-xl border-none'>Login</Link></li>
-  <li><Link href={'/register'} className='btn btn-active bg-[#da9e38] rounded-xl text-base shadow-none text-[#1e1711] border-none'>Register</Link></li>
+  <li><Link href={'/login'} className='btn shadow-none  btn-sm lg:btn-md text-sm lg:text-base bg-[#da9e38] text-[#1e1711] lg:px-5 rounded-xl border-none'>Login</Link></li>
+  <li className='hidden'><Link href={'/register'} className='btn shadow-none  btn-sm lg:btn-md text-sm lg:text-base bg-[#da9e38] text-[#1e1711] lg:px-5 rounded-xl border-none'>Register</Link></li>
   </>
 const Navbar = () => {
   const { data: session } = authClient.useSession();
@@ -53,7 +53,7 @@ const Navbar = () => {
      }
       </ul>
     </div>
-    <div className='flex justify-between items-center'>
+    <div className='flex items-center gap-1 lg:gap-2'>
     <Image 
     src={'/assets/logo.png'}
     alt='logo'

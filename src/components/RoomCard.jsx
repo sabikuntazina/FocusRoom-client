@@ -52,7 +52,7 @@ const RoomCard = ({ room }) => {
         
         {/* Top */}
         <div className="flex justify-between items-start gap-4">
-          <h2 className="text-3xl font-bold">
+          <h2 className="text-2xl lg:text-3xl font-bold line-clamp-1">
             {roomName}
           </h2>
 

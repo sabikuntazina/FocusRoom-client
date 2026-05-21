@@ -7,17 +7,17 @@ const Banner = () => {
   return (
     <div>
       <div className="hero  w-full  min-h-screen">
-        <div className="hero-content flex-col lg:flex-row-reverse ">
+        <div className="hero-content flex-col lg:flex-row-reverse max-w-6xl mx-auto gap-10 lg:gap-20 px-4">
           <Image
             src={"/assets/image-1.jpg"}
             alt="banner"
             height={600}
             width={600}
-            className="max-w-lg rounded-lg shadow-2xl object-cover rounded-3xl"
+            className="w-full max-w-sm lg:max-w-lg object-cover rounded-3xl shadow-2xl"
           ></Image>
 
           <div className="space-y-7">
-            <h1 className="lg:text-7xl text-5xl font-semibold ">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-semibold ">
               Find Your
               <span className="text-[#da9e38] font-serif italic"> Perfect </span>
                Focus Zone
@@ -29,13 +29,13 @@ const Banner = () => {
             <div className="flex gap-5">
               <Link
                 href={"/rooms"}
-                className="btn bg-[#da9e38] shadow-none text-[#1e1711] text-base rounded-xl border-none"
+                className="btn btn-sm lg:btn-md bg-[#da9e38] shadow-none text-[#1e1711] rounded-xl border-none"
               >
                 Explore Rooms <FaArrowRight />
               </Link>
               <Link
                 href={"/register"}
-                className="btn btn-outline btn-warning rounded-full   "
+                className="btn btn-sm lg:btn-md btn-outline btn-warning rounded-full "
               >
                 Become a host
               </Link>
