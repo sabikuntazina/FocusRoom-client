@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FocusRoom
 
-## Getting Started
+### Smart Space Booking Platform for Study, Meetings & Collaboration
 
-First, run the development server:
+FocusRoom is a modern full-stack room booking platform where students, teachers, and professionals can discover and reserve spaces for studying, meetings, classes, group discussions, and collaborative work.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The platform allows users to browse available rooms, check facilities, search and filter spaces, and book rooms for specific date and time slots with automatic time-conflict prevention.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🚀 Live Demo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🔗 Live Site: [Coming Soon](https://focus-room-client.vercel.app)  
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ✨ Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🔐 Authentication & Security
+- JWT Authentication
+- Secure HTTP-only Cookies
+- Protected Routes
+- User-based Authorization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🏢 Room Management
+- Add New Rooms
+- Update Room Information
+- Delete Rooms
+- Upload Room Images
+- Show Room Facilities & Availability(If you are an user and wants to create a room, then after creating room you have to edit room to enable available the room.)
 
-## Deploy on Vercel
+### 📅 Smart Booking System
+- Book rooms by date and time
+- Prevents double booking automatically
+- Time conflict detection
+- Booking status management
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🔍 Search & Filter
+- Search rooms by name or location
+- Filter by amenities
+- Filter by seat capacity
+- Responsive room browsing experience
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 👤 User Dashboard
+- View My Bookings
+- Manage My Rooms(My listings)
+- Booking History
+
+### 🎨 Modern UI/UX
+- Fully Responsive Design
+- Clean Dashboard Interface
+- Recruiter-Friendly Layout
+- Beautiful Card-Based UI
+
+---
+
+# 🧠 Project Purpose
+
+FocusRoom was built to solve the problem of managing shared spaces efficiently inside libraries, universities, and collaborative work environments.
+
+Users can reserve rooms for:
+- Study Sessions
+- Classes
+- Team Meetings
+- Group Discussions
+- Collaborative Work
+- Relaxing 
+- Praying
+- Dancing
+
+---
+
+# 🛠️ Technologies Used
+
+## Frontend
+- Next.js
+- React.js
+- Tailwind CSS
+- DaisyUI
+- React Icons
+
+## Backend
+- Node.js
+- Express.js
+
+## Database
+- MongoDB
+
+## Authentication
+- JWT
+- HTTP-only Cookies
+
+---
+
+# 📦 Main Functionalities
+
+## Room Features
+Each room contains:
+- Room Name
+- Description
+- Room Image
+- Location
+- Floor Number
+- Seat Capacity
+- Hourly Rate
+- Availability Status
+- Ratings
+- Amenities
+
+### Example Amenities
+- Projector
+- Whiteboard
+- Wi-Fi
+- Air Conditioning
+- Power Outlets
+- Quiet Zone
+- Meeting Tables
+
+---
+
+
+# 🌟 Future Improvements
+
+- Real-time Booking Updates
+- Email Notifications
+- Dark/Light Mode
+- QR Code Check-in
+- Payment Integration
+- AI Room Recommendations
+
+---
+
+
+# 👨‍💻 Author
+
+### Sabikun Enam Tazina
+
+Frontend Developer & MERN Stack Learner
