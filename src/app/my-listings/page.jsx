@@ -35,7 +35,7 @@ const rooms = await res.json();
 
   return (
   
-    <div className='space-y-5 my-20 max-w-6xl mx-auto'>
+    <div className='space-y-5 my-20 max-w-6xl mx-auto px-3'>
         <h2 className='text-[#da9e38] font-serif font-semibold text-5xl'>My Listings</h2>
          {
   rooms.length === 0 ? (

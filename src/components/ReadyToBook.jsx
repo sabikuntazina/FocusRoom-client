@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa";
 
 
 const ReadyToBook = () => {
@@ -19,10 +21,12 @@ const ReadyToBook = () => {
                 Explore premium study rooms, meeting spaces, and productivity
                 environments built to help you succeed.
               </p>
-
+              <Link href={'/rooms'}>
+              
               <button className="btn rounded-full bg-[#d89d33] hover:bg-[#e6b04d] border-none text-black px-10 text-lg">
-                Explore Rooms
+                Explore Rooms <FaArrowRight />
               </button>
+              </Link>
             </div>
           </div>
         </div>

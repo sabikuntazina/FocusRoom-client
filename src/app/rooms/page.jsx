@@ -37,7 +37,7 @@ const RoomsPage = async ({ searchParams }) => {
   const sortedRooms = [...rooms].reverse();
 
   return (
-    <div className="space-y-8 my-20 max-w-6xl mx-auto px-4">
+    <div className="space-y-8 my-12 lg:my-20 max-w-6xl mx-auto px-4">
       <div>
         <p className="uppercase tracking-[4px] text-sm text-[#b28b5c] mb-2">
           Discover
