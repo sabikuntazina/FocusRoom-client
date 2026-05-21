@@ -18,7 +18,7 @@ const AvailableRooms = async() => {
          <h2 className='text-[#da9e38] font-serif font-semibold text-5xl mb-10'>Available rooms</h2>
           <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
             {
-              rooms.map(room=><RoomCard key={room._id} room={room}></RoomCard>)
+              rooms?.map(room=><RoomCard key={room._id} room={room}></RoomCard>)
             }
           </div>
         </div>
