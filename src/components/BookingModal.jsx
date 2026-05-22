@@ -3,8 +3,6 @@ import { authClient } from "@/lib/auth-client";
 import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 
-const hourlyRate = 20;
-
 const allSlots = [
   "08:00",
   "09:00",
@@ -23,6 +21,7 @@ const allSlots = [
 
 export default function BookingModal({ room }) {
   // console.log(room)
+  const {hourlyRate} =room
   // Today's date
   const today = new Date().toISOString().split("T")[0];
   const [startTime, setStartTime] = useState("");
