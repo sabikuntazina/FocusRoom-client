@@ -1,5 +1,6 @@
 'use client';
 
+import { authClient } from "@/lib/auth-client";
 import React from "react";
 import toast from "react-hot-toast";
 
@@ -11,12 +12,17 @@ export default function BookingCancelModal({
 
   const handleCancel = async () => {
     try {
+      const {data:tokenData} = await authClient.token();
+    // console.log(tokenData)
+
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${booking._id}`,
         {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
+            'authorization': `Bearer ${tokenData?.token}`
+
           },
           body: JSON.stringify({
             status: "cancelled",
