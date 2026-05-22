@@ -1,6 +1,7 @@
 'use client';
 
 import { deleteRoomAction } from "@/lib/actions";
+import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 
 import toast from "react-hot-toast";
@@ -14,10 +15,17 @@ const router=useRouter();
     const modalId = `cancel_modal_${room._id}`;
   
     const handleCancel = async () => {
+      const {data:tokenData} = await authClient.token();
+    console.log(tokenData)
+
       const res = await fetch(
            `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${room._id}`,
            {
              method: "DELETE",
+              headers: {
+        'authorization': `Bearer ${tokenData?.token}`
+      },
+
            }
          );
      
